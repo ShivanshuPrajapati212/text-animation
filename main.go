@@ -3,6 +3,7 @@ package main
 import (
 	"cmp"
 	"fmt"
+	"math/rand"
 	"os"
 	"slices"
 	"time"
@@ -11,7 +12,7 @@ import (
 	"golang.org/x/term"
 )
 
-var TEXT string = "shivanshu"
+var TEXT string = "Hello, Bot"
 
 func main() {
 	fig := figure.NewFigure(TEXT, "", true)
@@ -23,7 +24,6 @@ func main() {
 
 	fmt.Print("\033[?25l")
 
-	lllll := 0
 	for {
 		width, height, err := term.GetSize(int(os.Stdout.Fd()))
 		if err != nil {
@@ -34,12 +34,7 @@ func main() {
 		for i, v := range lines {
 			fmt.Printf("\033[%d;%dH", ((height/2)-len(lines)/2)+i, (width/2)-len(longest)/2)
 			for _, letter := range v {
-				fmt.Printf("\033[38;2;%d;%d;%dm%s\033[0m", lllll, lllll, lllll, string(letter))
-				if lllll >= 255 {
-					lllll = 0
-				} else {
-					lllll += 1
-				}
+				fmt.Printf("\033[38;2;%d;%d;%dm%s\033[0m", rand.Intn(256), rand.Intn(256), rand.Intn(256), string(letter))
 			}
 		}
 
