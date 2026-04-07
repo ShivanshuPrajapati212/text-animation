@@ -14,11 +14,6 @@ import (
 var TEXT string = "shivanshu"
 
 func main() {
-	width, height, err := term.GetSize(int(os.Stdout.Fd()))
-	if err != nil {
-		panic(err)
-	}
-
 	fig := figure.NewFigure(TEXT, "", true)
 	lines := fig.Slicify()
 
@@ -30,6 +25,10 @@ func main() {
 
 	lllll := 0
 	for {
+		width, height, err := term.GetSize(int(os.Stdout.Fd()))
+		if err != nil {
+			panic(err)
+		}
 		fmt.Print("\033[2J")
 
 		for i, v := range lines {
