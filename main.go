@@ -38,6 +38,6 @@ func main() {
 			}
 		}
 
-		time.Sleep(time.Second / 24)
+		time.Sleep(time.Second / 10)
 	}
 }
